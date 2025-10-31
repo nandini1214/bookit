@@ -8,6 +8,7 @@ import promoRoutes from "./routes/promoRoutes"
 const app: Application = express()
 
 app.use(cors())
+console.log(cors())
 app.use(express.json())
 app.use(morgan("dev"))
 
@@ -15,8 +16,9 @@ app.get("/", (req: Request, res: Response) => {
   res.send("🌍 BookIt API is running...")
 })
 
-app.use("/api/experiences", experienceRoutes)
-app.use("/api/bookings", bookingRoutes)
-app.use("/api/promo", promoRoutes)
+app.use("/experiences", experienceRoutes)
+app.use("/bookings", bookingRoutes)
+app.use("/promo", promoRoutes)
 
 export default app
+      
