@@ -1,4 +1,4 @@
-import { IndianRupee } from "lucide-react";
+
 
 interface Experience {
   title: string;

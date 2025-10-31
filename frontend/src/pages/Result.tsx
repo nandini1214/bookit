@@ -1,5 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
-import { Check, CheckCircle, CircleAlertIcon, CircleArrowOutUpRight, CircleArrowRight, XCircle } from "lucide-react";
+import { Check, CircleAlertIcon, } from "lucide-react";
 
 export default function Result() {
   const { state } = useLocation();
