@@ -1,0 +1,66 @@
+# ====================================================
+# 🌐 Fullstack Project (React + Node + TypeScript)
+# ====================================================
+
+# -----------------------------------
+# General
+# -----------------------------------
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+.tmp/
+temp/
+.cache/
+coverage/
+*.log
+logs/
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+
+# -----------------------------------
+# Backend (Node + Express + TypeScript)
+# -----------------------------------
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/.env
+backend/.tmp/
+backend/coverage/
+backend/*.tsbuildinfo
+
+# -----------------------------------
+# Frontend (React + Vite + TypeScript)
+# -----------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
+frontend/.vscode/
+frontend/.idea/
+
+# -----------------------------------
+# IDE / Editor Settings
+# -----------------------------------
+.vscode/
+.idea/
+*.swp
+
+# -----------------------------------
+# OS-specific files
+# -----------------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------------
+# Optional: Deployment
+# -----------------------------------
+.vercel/
+.netlify/
+render.yaml
+railway.json
