@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import Experience from "../models/Experience"
+import Promo from "../models/Promo"
 
 dotenv.config()
 
@@ -9,7 +10,7 @@ const MONGO_URI = process.env.MONGO_URI as string
 const seedData = async () => {
   await mongoose.connect(MONGO_URI)
 
-  await Experience.deleteMany()
+  // await Experience.deleteMany()
 
   await Experience.insertMany([
     {
@@ -31,7 +32,20 @@ const seedData = async () => {
       slots: ["07:00 am","09:00 am", "11:00 am" ]
     }
   ])
+  await Promo.insertMany([
+    {
+      code: "SUMMER20",
+      discountType: "percentage",
+      value: 20
+    },
+    {
+      code: "HALFPRICE",
+      discountType: "fixed",
+      value: 50
+    }
+  ])
 
+  
   console.log("✅ Sample experiences added!")
   mongoose.connection.close()
 }

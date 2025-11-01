@@ -5,7 +5,8 @@ export interface IBooking extends Document {
   name: string
   email: string
   date: string
-  totalPrice: number
+  totalPrice: number 
+  slot : string
 }
 
 const bookingSchema = new Schema<IBooking>({
@@ -13,7 +14,8 @@ const bookingSchema = new Schema<IBooking>({
   name: { type: String, required: true },
   email: { type: String, required: true },
   date: { type: String, required: true },
-  totalPrice: { type: Number, required: true }
+  totalPrice: { type: Number, required: true },
+  slot : {type:String, required: true}
 })
 
 export default mongoose.model<IBooking>("Booking", bookingSchema)

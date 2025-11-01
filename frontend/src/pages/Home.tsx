@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import ExperienceCard from "../components/ExperienceCard";
 import Loader from "../components/Loader";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 interface Experience {
   _id: string;
@@ -18,9 +18,15 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+
   useEffect(() => {
+    console.log("fetching the data")
     API.get("/experiences")
-      .then((res) => setExperiences(res.data))
+      .then((res) =>{
+        console.log("received data",res.data)
+        setExperiences(res.data)
+      })
+      .catch((err) => console.log("API ERROR",err))
       .finally(() => setLoading(false));
   }, []);
 

@@ -12,13 +12,14 @@ interface Experience {
   location: string;
   price: number;
   availableDates: string[];
-  slots: number;
+  slots: string[];
 }
 
 export default function Details() {
   const { id } = useParams();
   const [experience, setExperience] = useState<Experience | null>(null);
   const [selectedDate, setSelectedDate] = useState("");
+  const [selectedSlot, setSelectedSlot] = useState("");
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
 
@@ -34,7 +35,8 @@ export default function Details() {
 
   const handleBook = () => {
     if (!selectedDate) return alert("Please select a date");
-    navigate("/checkout", { state: { experience, selectedDate, quantity, total } });
+    if (!selectedSlot) return alert("Please select a slot");
+    navigate("/checkout", { state: { experience, selectedDate, quantity, total , selectedSlot} });
   };
 
   return (
@@ -82,15 +84,19 @@ export default function Details() {
 
           {/* Time Slots (Static Example) */}
           <h2 className="text-[14px] font-semibold mb-2">Choose time</h2>
-          {/* <div className="flex flex-wrap gap-2 mb-2">
-          {experience.slots.map((slot)=>(
+          <div className="flex flex-wrap gap-2 mb-2">
+          {experience?.slots?.map((slot)=>(
 
-            <button key={slot} className="border border-[#E0E0E0] rounded-[6px] px-[16px] py-[8px] text-[13px] text-[#161616]">
+            <button key={slot} onClick={()=>setSelectedSlot(slot)}  className={`px-[16px] py-[8px] rounded-[6px] border text-[13px] ${
+                  selectedSlot === slot
+                    ? "bg-[#FFD643] border-[#FFD643] text-[#161616]"
+                    : "bg-white border-[#E0E0E0] text-[#5E5E5E]"
+                }`}>
               {slot}
             </button>
           ))}
             
-          </div> */}
+          </div>
 
           <p className="text-[#A0A0A0] text-[12px] mt-2">
             All times are in IST (GMT +5:30)
