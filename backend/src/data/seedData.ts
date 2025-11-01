@@ -19,7 +19,7 @@ const seedData = async () => {
       location: "Cappadocia, Turkey",
       price: 200,
       availableDates: ["2025-11-01", "2025-11-05", "2025-11-10"],
-      slots: 8
+      slots: ["07:00 am","09:00 am", "11:00 am" ]
     },
     {
       title: "Scuba Diving Adventure",
@@ -28,7 +28,7 @@ const seedData = async () => {
       location: "Bali, Indonesia",
       price: 150,
       availableDates: ["2025-11-03", "2025-11-06", "2025-11-09"],
-      slots: 5
+      slots: ["07:00 am","09:00 am", "11:00 am" ]
     }
   ])
 

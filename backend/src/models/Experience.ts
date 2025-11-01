@@ -7,7 +7,7 @@ export interface IExperience extends Document {
   location: string
   price: number
   availableDates: string[]
-  slots: number
+  slots: string[]
 }
 
 const experienceSchema = new Schema<IExperience>({
@@ -17,7 +17,7 @@ const experienceSchema = new Schema<IExperience>({
   location: { type: String, required: true },
   price: { type: Number, required: true },
   availableDates: { type: [String], required: true },
-  slots: { type: Number, default: 10 }
+  slots: { type: [String], required: true }
 })
 
 export default mongoose.model<IExperience>("Experience", experienceSchema)

@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const API = axios.create({
-  baseURL: "https://bookit-1-afwz.onrender.com", // change to your deployed backend later
+  baseURL: API_URL, 
 });
 
 export default API;

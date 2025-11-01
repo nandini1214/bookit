@@ -50,8 +50,8 @@ export default function Checkout() {
   return (
     <div className="">
       {/* Back Button */}
-      <div className="flex items-center gap-2 mb-8 cursor-pointer" onClick={() => navigate(-1)}>
-        <ArrowLeft className="w-4 h-4 text-gray-600" />
+      <div className="flex items-center gap-2 mb-8 cursor-pointer" >
+        <ArrowLeft className="w-4 h-4 text-gray-600" onClick={() => navigate(-1)}/>
         <span className="text-gray-700 text-[14px]">Checkout</span>
       </div>
 

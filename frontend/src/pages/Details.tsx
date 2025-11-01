@@ -23,9 +23,9 @@ export default function Details() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    API.get(`/experiences/${id}`).then((res) => setExperience(res.data));
+    API.get(`/experiences/${id}`).then((res) => setExperience(res.data)).catch((error)=>console.log(error));
   }, [id]);
-
+  console.log(experience)
   if (!experience) return <Loader />;
 
   const subtotal = experience.price * quantity;
@@ -40,8 +40,8 @@ export default function Details() {
   return (
     <div className="">
       {/* Back Button */}
-      <div className="flex items-center gap-2 mb-6 cursor-pointer" onClick={() => navigate(-1)}>
-        <ArrowLeft className="w-4 h-4 text-gray-600" />
+      <div className="flex items-center gap-2 mb-6 cursor-pointer" >
+        <ArrowLeft className="w-4 h-4 text-gray-600" onClick={()=>navigate(-1)}/>
         <span className="text-gray-700 text-[14px]">Details</span>
       </div>
 
@@ -65,7 +65,7 @@ export default function Details() {
           {/* Date Selection */}
           <h2 className="text-[14px] font-semibold mb-2">Choose date</h2>
           <div className="flex flex-wrap gap-2 mb-6">
-            {experience.availableDates.map((date) => (
+            {experience?.availableDates?.map((date) => (
               <button
                 key={date}
                 onClick={() => setSelectedDate(date)}
@@ -82,20 +82,15 @@ export default function Details() {
 
           {/* Time Slots (Static Example) */}
           <h2 className="text-[14px] font-semibold mb-2">Choose time</h2>
-          <div className="flex flex-wrap gap-2 mb-2">
-            <button className="border border-[#E0E0E0] rounded-[6px] px-[16px] py-[8px] text-[13px] text-[#161616]">
-              07:00 am <span className="text-red-500 ml-1">4 left</span>
+          {/* <div className="flex flex-wrap gap-2 mb-2">
+          {experience.slots.map((slot)=>(
+
+            <button key={slot} className="border border-[#E0E0E0] rounded-[6px] px-[16px] py-[8px] text-[13px] text-[#161616]">
+              {slot}
             </button>
-            <button className="border border-[#E0E0E0] rounded-[6px] px-[16px] py-[8px] text-[13px] text-[#161616] bg-[#E6FFEC]">
-              09:00 am
-            </button>
-            <button className="border border-[#E0E0E0] rounded-[6px] px-[16px] py-[8px] text-[13px] text-[#161616]">
-              11:00 am <span className="text-red-500 ml-1">5 left</span>
-            </button>
-            <button className="border border-[#E0E0E0] rounded-[6px] px-[16px] py-[8px] text-[13px] text-[#A0A0A0] bg-[#F5F5F5] cursor-not-allowed">
-              01:00 pm Sold out
-            </button>
-          </div>
+          ))}
+            
+          </div> */}
 
           <p className="text-[#A0A0A0] text-[12px] mt-2">
             All times are in IST (GMT +5:30)

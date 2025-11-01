@@ -1,5 +1,3 @@
-
-
 interface Experience {
   title: string;
   description: string;
@@ -10,9 +8,10 @@ interface Experience {
 
 interface Props {
   readonly experience: Experience;
+  readonly onDetails : ()=> void;
 }
 
-export default function ExperienceCard({ experience }: Props) {
+export default function ExperienceCard({ experience , onDetails}: Props) {
   return (
     <div className="top-[135px] left-[124px] w-[280px] h-[312px] rounded-[12px] bg-[#F0F0F0]">
       {/* Image */}
@@ -50,6 +49,7 @@ export default function ExperienceCard({ experience }: Props) {
           <button
             className="bg-[#FFD643] text-[#161616] text-[14px] font-medium px-[12px] py-[6px] 
                        rounded-[6px] hover:bg-[#fcd535] transition"
+            onClick={onDetails}
           >
             View Details
           </button>

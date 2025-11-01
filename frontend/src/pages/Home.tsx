@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import ExperienceCard from "../components/ExperienceCard";
 import Loader from "../components/Loader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Experience {
   _id: string;
@@ -16,10 +16,11 @@ interface Experience {
 export default function Home() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     API.get("/experiences")
-      .then(res => setExperiences(res.data))
+      .then((res) => setExperiences(res.data))
       .finally(() => setLoading(false));
   }, []);
 
@@ -27,12 +28,13 @@ export default function Home() {
 
   return (
     <div className="p-8">
-
       <div className="grid grid-cols-1 md:grid-cols-4 gap-[24px]">
-        {experiences.map(exp => (
-          <Link to={`/details/${exp._id}`} key={exp._id}>
-            <ExperienceCard experience={exp} />
-          </Link>
+        {experiences?.map((exp) => (
+          <ExperienceCard
+            key={exp._id}
+            experience={exp}
+            onDetails={() => navigate(`/details/${exp._id}`)}
+          />
         ))}
       </div>
     </div>
